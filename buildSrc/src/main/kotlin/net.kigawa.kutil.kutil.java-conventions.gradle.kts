@@ -19,8 +19,9 @@ repositories {
 
 dependencies {
   commonMainImplementation("org.jetbrains.kotlin:kotlin-stdlib")
+  commonMainImplementation("org.jetbrains.kotlin:kotlin-reflect")
   commonTestImplementation(kotlin("test-common"))
-  commonMainImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+//  commonMainImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 }
 
 version = ProjectConfig.VERSION
@@ -30,7 +31,7 @@ group = ProjectConfig.GROUP
 kotlin {
   jvm("jvm") {
   }
-  js("js") {
+  js(IR) {
     browser {}
     nodejs { }
   }
@@ -43,7 +44,11 @@ kotlin {
 
     }
     val jvmTest by getting
-    val commonMain by getting
+    val commonMain by getting {
+      dependencies {
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+      }
+    }
     val commonTest by getting
   }
 }
