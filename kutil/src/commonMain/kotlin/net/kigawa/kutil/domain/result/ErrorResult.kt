@@ -1,4 +1,4 @@
-package net.kigawa.kutil.kutil.api.err
+package net.kigawa.kutil.domain.result
 
 class ErrorResult<E>(private val err: E) : Result<Any, E>() {
     override fun getErrorOrNull(): E = err

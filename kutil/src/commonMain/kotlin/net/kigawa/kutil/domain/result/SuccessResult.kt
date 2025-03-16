@@ -1,4 +1,4 @@
-package net.kigawa.kutil.kutil.api.err
+package net.kigawa.kutil.domain.result
 
 class SuccessResult<T>(
     private val result: T,

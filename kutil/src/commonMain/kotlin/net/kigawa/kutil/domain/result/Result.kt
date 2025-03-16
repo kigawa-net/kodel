@@ -1,4 +1,4 @@
-package net.kigawa.kutil.kutil.api.err
+package net.kigawa.kutil.domain.result
 
 sealed class Result<T, E> {
     abstract fun getErrorOrNull(): E?
