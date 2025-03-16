@@ -6,16 +6,7 @@
 
 ## Use
 
-```pom.xml
-    <dependencies>
-        <dependency>
-            <groupId>net.kigawa.kutil</groupId>
-            <artifactId>kutil</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-        ......
-    </dependencies>
-```
+* https://central.sonatype.com/artifact/net.kigawa.kutil/kutil-unit-impl
 
 ## Requirement
 

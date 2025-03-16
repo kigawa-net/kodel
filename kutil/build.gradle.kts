@@ -10,11 +10,13 @@ plugins {
 dependencies {
 }
 
+
 publishing {
+
   publications {
     withType<MavenPublication> {
-      artifactId = if (name == "kotlinMultiplatform") artifactId
-      else "$artifactId-$name"
+//      artifactId = if (name == "kotlinMultiplatform") artifactId
+//      else "$artifactId-$name"
 
       pom {
         name.set("kutil")
@@ -43,6 +45,18 @@ publishing {
           url.set("https://github.com/kigawa01/kutil-java")
         }
       }
+      val dokkaJar = project.tasks.register("${this.name}DokkaJar", Jar::class) {
+        group = JavaBasePlugin.DOCUMENTATION_GROUP
+        description = "Assembles Kotlin docs with Dokka into a Javadoc jar"
+        archiveClassifier.set("javadoc")
+        from(tasks.named("dokkaHtml"))
+
+        // Each archive name should be distinct, to avoid implicit dependency issues.
+        // We use the same format as the sources Jar tasks.
+        // https://youtrack.jetbrains.com/issue/KT-46466
+        archiveBaseName.set("${archiveBaseName.get()}-${this.name}")
+      }
+      artifact(dokkaJar)
     }
   }
 
