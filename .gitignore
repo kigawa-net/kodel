@@ -127,3 +127,5 @@ run/
 /log1/
 /log/
 /*/build/
+/*/*/build/
+/.kotlin/

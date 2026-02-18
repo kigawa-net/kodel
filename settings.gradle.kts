@@ -4,3 +4,6 @@
 
 rootProject.name = "kutil"
 include("kutil")
+include("kodel:api")
+include("kodel:coroutine")
+include("kodel:core")
