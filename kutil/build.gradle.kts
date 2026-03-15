@@ -79,5 +79,5 @@ publishing {
   }
 }
 signing {
-  sign(publishing.publications)
+  if (!isJitPack) sign(publishing.publications)
 }
