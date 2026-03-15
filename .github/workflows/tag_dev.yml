@@ -20,6 +20,7 @@ jobs:
       - name: Get next version from latest tag
         id: get_version
         run: |
+          git tag --list
           LATEST=$(git tag --list '[0-9]*.[0-9]*.[0-9]*' '[0-9]*.[0-9]*.[0-9]*-dev' | sed 's/-dev$//' | sort -V | tail -1)
           if [ -z "$LATEST" ]; then
             LATEST="0.0.0"
