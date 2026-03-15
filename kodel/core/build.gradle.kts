@@ -10,6 +10,12 @@ plugins {
     id("org.jetbrains.dokka") version "1.9.20"
 }
 
+val isJitPack = System.getenv("JITPACK") != null
+
+tasks.matching { it.name.startsWith("dokka") }.configureEach {
+    enabled = !isJitPack
+}
+
 kotlin {
     compilerOptions {
         freeCompilerArgs = listOf("-Xcontext-parameters")
@@ -98,5 +104,5 @@ publishing {
     }
 }
 signing {
-    sign(publishing.publications)
+    if (!isJitPack) sign(publishing.publications)
 }

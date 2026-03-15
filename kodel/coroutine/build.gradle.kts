@@ -9,6 +9,12 @@ plugins {
     signing
     id("org.jetbrains.dokka") version "1.9.20"
 }
+
+val isJitPack = System.getenv("JITPACK") != null
+
+tasks.matching { it.name.startsWith("dokka") }.configureEach {
+    enabled = !isJitPack
+}
 repositories {
     mavenCentral()
     gradlePluginPortal()
@@ -101,5 +107,5 @@ publishing {
     }
 }
 signing {
-    sign(publishing.publications)
+    if (!isJitPack) sign(publishing.publications)
 }
