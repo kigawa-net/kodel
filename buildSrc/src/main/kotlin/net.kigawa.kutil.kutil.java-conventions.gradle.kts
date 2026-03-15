@@ -24,7 +24,7 @@ dependencies {
     commonMainImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
     commonTestImplementation(kotlin("test-common"))
     commonMainImplementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.10.0")
-    commonMainImplementation("io.ktor:ktor-http:3.0.2")
+    commonMainImplementation("io.ktor:ktor-http:3.4.1")
     commonMainImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 }
 
