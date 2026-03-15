@@ -5,28 +5,27 @@ import dependencies.ProjectConfig
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 
 plugins {
-  kotlin("multiplatform")
-  kotlin("plugin.serialization")
+    kotlin("multiplatform")
+    kotlin("plugin.serialization")
 }
 
 val kotlinVersion = "2.3.0"
 
 repositories {
-  mavenLocal()
-  mavenCentral()
+    mavenLocal()
+    mavenCentral()
 
-  maven {
-    url = uri("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
-  }
+    maven {
+        url = uri("https://maven.pkg.jetbrains.space/public/p/kotlinx-html/maven")
+    }
 }
 
 dependencies {
-  commonMainImplementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
-  commonMainImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
-  commonTestImplementation(kotlin("test-common"))
-  commonMainImplementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.3")
-  commonMainImplementation("io.ktor:ktor-http:3.0.2")
-  commonMainImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+    commonMainImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
+    commonTestImplementation(kotlin("test-common"))
+    commonMainImplementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.3")
+    commonMainImplementation("io.ktor:ktor-http:3.0.2")
+    commonMainImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
 }
 
 version = ProjectConfig.VERSION
@@ -34,49 +33,49 @@ group = ProjectConfig.GROUP
 
 
 kotlin {
-  jvmToolchain(25)
-  jvm("jvm") {
-  }
+    jvmToolchain(25)
+    jvm("jvm") {
+    }
 //  js {
 //    browser {}
 //    nodejs { }
 //  }
 
-  sourceSets {
-    val jvmMain by getting {
-      dependencies {
-        implementation(kotlin("test-junit5"))
-      }
+    sourceSets {
+        jvmMain {
+            dependencies {
+                implementation(kotlin("test-junit5"))
+            }
 
+        }
+        jvmTest {
+            dependencies {
+                implementation(kotlin("test-junit5"))
+            }
+        }
+        commonMain {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+            }
+        }
+        commonTest {}
     }
-    val jvmTest by getting {
-      dependencies {
-        implementation(kotlin("test-junit5"))
-      }
-    }
-    val commonMain by getting {
-      dependencies {
-        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
-      }
-    }
-    val commonTest by getting
-  }
 }
 
 
 
 tasks {
-  withType<KotlinCompilationTask<*>> {
-    compilerOptions {
-      freeCompilerArgs.add("-Xexpect-actual-classes")
-      if (name.contains("Js", ignoreCase = true)) {
-        freeCompilerArgs.add("-Xexpect-actual-classes")
-      }
+    withType<KotlinCompilationTask<*>> {
+        compilerOptions {
+            freeCompilerArgs.add("-Xexpect-actual-classes")
+            if (name.contains("Js", ignoreCase = true)) {
+                freeCompilerArgs.add("-Xexpect-actual-classes")
+            }
+        }
     }
-  }
 
-  withType<Test> {
-    useJUnitPlatform()
-  }
+    withType<Test> {
+        useJUnitPlatform()
+    }
 
 }

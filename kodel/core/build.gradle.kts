@@ -10,10 +10,6 @@ plugins {
     id("org.jetbrains.dokka") version "1.9.20"
 }
 
-repositories {
-    mavenCentral()
-    gradlePluginPortal()
-}
 kotlin {
     compilerOptions {
         freeCompilerArgs = listOf("-Xcontext-parameters")
