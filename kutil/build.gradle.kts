@@ -4,7 +4,7 @@ plugins {
   `maven-publish`
   signing
   id("net.kigawa.kutil.kutil.java-conventions")
-  id("org.jetbrains.dokka") version "1.9.20"
+  id("org.jetbrains.dokka") version "2.0.0"
   kotlin("plugin.serialization")
 }
 
