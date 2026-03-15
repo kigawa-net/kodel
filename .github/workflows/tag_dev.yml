@@ -1,0 +1,40 @@
+name: tag dev version
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+
+      - name: Get next version from latest tag
+        id: get_version
+        run: |
+          LATEST=$(git tag --list 'v[0-9]*.[0-9]*.[0-9]*' 'v[0-9]*.[0-9]*.[0-9]*-dev' | sed 's/-dev$//' | sort -V | tail -1)
+          if [ -z "$LATEST" ]; then
+            LATEST="v0.0.0"
+          fi
+          MAJOR=$(echo "$LATEST" | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)/\1/')
+          MINOR=$(echo "$LATEST" | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)/\2/')
+          PATCH=$(echo "$LATEST" | sed 's/v\([0-9]*\)\.\([0-9]*\)\.\([0-9]*\)/\3/')
+          NEXT="v${MAJOR}.${MINOR}.$((PATCH + 1))-dev"
+          echo "version=${NEXT}" >> "$GITHUB_OUTPUT"
+
+      - name: Delete existing dev tag if exists
+        run: |
+          git push origin :refs/tags/${{ steps.get_version.outputs.version }} || true
+
+      - name: Create and push dev tag
+        run: |
+          git tag ${{ steps.get_version.outputs.version }}
+          git push origin ${{ steps.get_version.outputs.version }}
