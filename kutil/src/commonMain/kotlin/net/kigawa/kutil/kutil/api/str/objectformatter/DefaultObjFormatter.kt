@@ -4,12 +4,7 @@ class DefaultObjFormatter : ObjectFormatter {
   override fun format(obj: Any?): String {
     return when (obj) {
       is String -> obj
-      is Array<*> -> obj.joinToString(
-        separator = ", ",
-        prefix = "Array[",
-        postfix = "]",
-        transform = { format(obj) }
-      )
+      is Array<*> -> "[${obj.joinToString(", ") { format(it) }}]"
       else -> obj.toString()
     }
   }

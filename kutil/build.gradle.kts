@@ -5,6 +5,7 @@ plugins {
   signing
   id("net.kigawa.kutil.kutil.java-conventions")
   id("org.jetbrains.dokka") version "1.9.20"
+  kotlin("plugin.serialization")
 }
 
 dependencies {

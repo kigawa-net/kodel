@@ -4,6 +4,6 @@ package net.kigawa.kutil.kutil.api.list
 
 object KutilList {
   fun <T> connectList(vararg list: List<T>): List<T> {
-    return list.flatMap {it}
+    return list.toList().flatMap { it }
   }
 }
