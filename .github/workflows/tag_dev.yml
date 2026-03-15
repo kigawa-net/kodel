@@ -3,7 +3,7 @@ name: tag dev version
 on:
   push:
     branches:
-      - dev
+      - develop
 
 jobs:
   tag:
