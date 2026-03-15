@@ -11,6 +11,12 @@ plugins {
 dependencies {
 }
 
+val isJitPack = System.getenv("JITPACK") != null
+
+tasks.matching { it.name.startsWith("dokka") }.configureEach {
+  enabled = !isJitPack
+}
+
 
 publishing {
 
