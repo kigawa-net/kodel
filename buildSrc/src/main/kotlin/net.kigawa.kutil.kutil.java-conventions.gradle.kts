@@ -8,7 +8,7 @@ plugins {
     kotlin("plugin.serialization")
 }
 
-val kotlinVersion = "2.3.10"
+val kotlinVersion = "2.3.20"
 
 repositories {
     mavenLocal()
