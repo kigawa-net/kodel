@@ -36,6 +36,7 @@ dependencies {
   implementation(pluginId("org.jlleitschuh.gradle.ktlint", "12.1.1"))
   implementation(pluginId("com.google.devtools.ksp", "2.2.20-2.0.4"))
   implementation(pluginId("org.jetbrains.dokka", dokkaVersion))
+  implementation(pluginId("io.github.gradle-nexus.publish-plugin", "2.0.0"))
   implementation("org.jetbrains.compose:compose-gradle-plugin:$composeVersion")
 // Source: https://mvnrepository.com/artifact/com.android.tools.build/gradle
   implementation("com.android.tools.build:gradle:8.12.3")
