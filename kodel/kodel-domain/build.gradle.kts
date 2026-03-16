@@ -5,6 +5,7 @@ import org.jetbrains.kotlin.gradle.targets.js.testing.KotlinJsTest
 
 plugins {
     kotlin("multiplatform")
+    id("net.kigawa.kodel.maven-publish-conventions")
 }
 
 repositories {
@@ -62,6 +63,17 @@ kotlin {
         commonTest {
             dependencies {
                 implementation(kotlin("test"))
+            }
+        }
+    }
+}
+
+publishing {
+    publications {
+        withType<MavenPublication> {
+            pom {
+                name.set("Kodel Domain")
+                description.set("Domain model for Kodel")
             }
         }
     }
