@@ -79,6 +79,12 @@ inline fun <reified T, reified E, R> Res<T, E>.whenErrOk(onErr: (E) -> R, onOk: 
 }
 
 @Suppress("unused")
+inline fun <reified T, reified E> Res<T, E>.unwrap(onErr: (E) -> T): T = when (this) {
+    is Res.Ok<T, E> -> value
+    is Res.Err<T, E> -> onErr(err)
+}
+
+@Suppress("unused")
 fun <T, U, E> Res<T, E>.with(res: Res<U, E>): Res<Pair<T, U>, E> {
     val a = when (val r = this) {
         is Res.Err -> return r.convert()
