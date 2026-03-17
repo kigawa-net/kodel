@@ -4,7 +4,6 @@
 rootProject.name = "kodel"
 
 include("kutil")
-include("kodel:api")
 include("kodel:coroutine")
 include("kodel:core")
 @DslMarker
@@ -35,6 +34,7 @@ class IncludeDsl(
     }
 
     fun group(name: String, block: IncludeDsl.() -> Unit) = IncludeDsl(prefix + name, settings).block()
+    @Suppress("unused")
     fun includeIfExistsAndGroup(name: String, block: IncludeDsl.() -> Unit) =
         if (includeIfExists(name)) group(name, block)
         else Unit
