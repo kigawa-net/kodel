@@ -24,7 +24,7 @@ dependencies {
     commonTestImplementation(kotlin("test-common"))
     commonMainImplementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.10.0")
     commonMainImplementation("io.ktor:ktor-http:3.4.1")
-    commonMainImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+    commonMainImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
 }
 
 
@@ -51,7 +51,7 @@ kotlin {
         }
         commonMain {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
             }
         }
         commonTest {}
