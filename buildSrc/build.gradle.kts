@@ -19,7 +19,7 @@ repositories {
 }
 
 val kotlinVersion = "2.3.0"
-val composeVersion = "1.10.2"
+val composeVersion = "1.12.0"
 val dokkaVersion = "2.1.0"
 fun pluginId(pluginName: String, version: String) = "$pluginName:$pluginName.gradle.plugin:$version"
 fun kotlinPluginId(pluginName: String, version: String = kotlinVersion) =
