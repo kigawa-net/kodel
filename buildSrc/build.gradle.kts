@@ -39,5 +39,5 @@ dependencies {
   implementation(pluginId("io.github.gradle-nexus.publish-plugin", "2.0.0"))
   implementation("org.jetbrains.compose:compose-gradle-plugin:$composeVersion")
 // Source: https://mvnrepository.com/artifact/com.android.tools.build/gradle
-  implementation("com.android.tools.build:gradle:8.12.3")
+  implementation("com.android.tools.build:gradle:8.13.0")
 }
